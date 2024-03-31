@@ -44,6 +44,21 @@ function my_register_header_widget() {
     );
 }
 
+function mytheme_register_footer_menu() {
+    register_nav_menu(
+        'footer-menu',
+        esc_html__( 'Footer Menu', 'mytheme' )
+    );
+}
+
+function add_template_part_call(){
+
+    echo
+'<div class"template-part"><h2>Call us</h2></br><p>1-800 555 5555</p></div>';
+
+}
+
+add_action( 'after_setup_theme', 'mytheme_register_footer_menu' );
 add_action( 'widgets_init', 'my_register_header_widget' );
 add_action( 'widgets_init', 'my_register_sidebars' );
 add_action( 'wp_enqueue_scripts', 'enqueue_bootstrap' );

@@ -47,42 +47,99 @@ get_template_part('part', 'hero');
 </section>
 
 <section>
+<?php
+// Array of random names and descriptions
+$team_members = array(
+    array(
+        'name' => 'John Doe',
+        'description' => 'Experienced adventurer with a passion for exploration.'
+    ),
+    array(
+        'name' => 'Jane Smith',
+        'description' => 'Nature enthusiast and outdoor lover.'
+    ),
+    array(
+        'name' => 'David Johnson',
+        'description' => 'Hiker and outdoor sports enthusiast.'
+    ),
+    array(
+        'name' => 'Emily Brown',
+        'description' => 'Passionate environmentalist and wildlife advocate.'
+    ),
+    array(
+        'name' => 'Michael Wilson',
+        'description' => 'Photographer capturing the beauty of nature.'
+    ),
+    array(
+        'name' => 'Sarah Anderson',
+        'description' => 'Adventurous traveler exploring new horizons.'
+    )
+);
+?>
+<h2 class="text-center">Our Team</h2>
+<div class="container">
+    <div class="row">
+        <?php foreach ($team_members as $member) : ?>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img class="card-img-top" src="<?php echo get_theme_file_uri('assets/image.png') ?>" alt="Team Member <?php echo $member['name']; ?>">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <h5 class="card-title"><?php echo $member['name']; ?></h5>
+                            <p class="card-text"><?php echo $member['description']; ?></p> <!-- Added description -->
+                        </div>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-primary custom-btn" style="background-color: #85C1E9;">View Profile</a> <!-- Added background color -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+</section>
+
+<section>
   <h2 id="need-pad" class="text-center">Testimonials</h2>
   <div id="testimonials" class="container">
     <div class="row">
-      <div class="col-md-4">
-        <div class="testimonial">
-          <img src="<?php echo get_theme_file_uri('assets/image.png') ?>" alt="Testimonial 1" class="testimonial-img img-fluid">
-          <h3>John Doe</h3>
-          <h4>Adventurer</h4>
-          <p>
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam, nisi nec ultricies efficitur, sem elit bibendum ligula, at dictum eros risus sed quam."
-          </p>
+      <?php
+      $testimonials = array(
+        array(
+          'name' => 'John Doe',
+          'occupation' => 'Adventurer',
+          'quote' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam, nisi nec ultricies efficitur, sem elit bibendum ligula, at dictum eros risus sed quam.'
+        ),
+        array(
+          'name' => 'Jane Smith',
+          'occupation' => 'Nature Enthusiast',
+          'quote' => 'Sed consectetur nec justo eget ultrices. Phasellus bibendum ipsum non felis accumsan, vitae aliquet elit scelerisque.'
+        ),
+        array(
+          'name' => 'David Johnson',
+          'occupation' => 'Hiker',
+          'quote' => 'Fusce hendrerit malesuada felis, sed lobortis orci. Curabitur id enim sed elit pharetra sodales non eu mauris.'
+        )
+      );
+
+      foreach ($testimonials as $testimonial) :
+      ?>
+        <div class="col-md-4">
+          <div class="testimonial">
+            <img src="<?php echo get_theme_file_uri('assets/image.png') ?>" alt="<?php echo $testimonial['name']; ?>" class="testimonial-img img-fluid">
+            <h3><?php echo $testimonial['name']; ?></h3>
+            <h4><?php echo $testimonial['occupation']; ?></h4>
+            <p>
+              "<?php echo $testimonial['quote']; ?>"
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="testimonial">
-          <img src="<?php echo get_theme_file_uri('assets/image.png') ?>" alt="Testimonial 2" class="testimonial-img img-fluid">
-          <h3>Jane Smith</h3>
-          <h4>Nature Enthusiast</h4>
-          <p>
-            "Sed consectetur nec justo eget ultrices. Phasellus bibendum ipsum non felis accumsan, vitae aliquet elit scelerisque."
-          </p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="testimonial">
-          <img src="<?php echo get_theme_file_uri('assets/image.png') ?>" alt="Testimonial 3" class="testimonial-img img-fluid">
-          <h3>David Johnson</h3>
-          <h4>Hiker</h4>
-          <p>
-            "Fusce hendrerit malesuada felis, sed lobortis orci. Curabitur id enim sed elit pharetra sodales non eu mauris."
-          </p>
-        </div>
-      </div>
+      <?php endforeach; ?>
     </div>
   </div>
 </section>
+
 
 <section class="video">
   <iframe src="https://player.vimeo.com/video/226761321?h=f75b95dada" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
@@ -116,5 +173,7 @@ get_template_part('part', 'hero');
     <p>No posts found</p>
   <?php endif; ?>
 </div>
+
+<?php add_template_part_call(); ?>
 
 <?php get_footer(); ?>
