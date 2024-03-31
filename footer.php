@@ -39,6 +39,15 @@
     ?>
     <h3>All rights reserved @2024</h3>
     <?php get_sidebar('primary'); ?>
+    <div class="footer-column">
+        <?php
+        wp_nav_menu( array(
+            'theme_location' => 'footer-menu',
+            'container'      => false,
+            'menu_class'     => 'footer-menu',
+        ) );
+        ?>
+    </div>
 </footer>
 <?php wp_footer(); ?>
 </body>

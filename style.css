@@ -194,4 +194,21 @@ text-align: center;
   padding: 10px;
 }
 
+/*footer menu */
+.footer-column {
+  text-align: center;
+}
+
+.footer-menu {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+}
+
+.footer-menu li {
+  display: inline-block;
+  margin-right: 10px; /* Adjust spacing between menu items */
+}
+
+
 
